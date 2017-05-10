@@ -13,12 +13,17 @@ import { AuthenticationService } from './user/authentication.service';
 
 // components
 import { LoginComponent } from './user/login/login.component';
+import { RegisterComponent } from './user/login/register.component';
 import { ItemComponent } from './bucketlist/buckets/item.component';
 
 const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: 'buckelist',
@@ -44,7 +49,8 @@ const appRoutes: Routes = [
     AppComponent,
     BucketlistListComponent,
     LoginComponent,
-    ItemComponent
+    ItemComponent,
+    RegisterComponent
   ],
   providers: [ BucketlistService, AuthenticationService ],
   bootstrap:    [ AppComponent ]
