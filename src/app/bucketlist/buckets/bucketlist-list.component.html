@@ -1,33 +1,34 @@
-<div>
-  <h2>Add Bucketelist</h2>
-  <form class="ui form">
-    <div class="four wide field">
-      <label>Bucket name</label>
-      <input #bucketlistName placeholder="Add bucketlist..." [value]="addBucket" placeholder="bucket name">
-      <button class="ui blue button"(click)="createBucketlist(bucketlistName.value); bucketlistName.value">Create bucketlist</button>
-    </div>
-  </form>
-  
-</div>
+<div class="bucketlists-holder">
 
-<div>
-  This is a list of your buckets.
-  <ul>
-    <li *ngFor="let bucketlistitem of bucketlists" [routerLink]="['/buckelist', bucketlistitem.id ]">
-      <div class="ui celled list">
-        <div class="item">
-          <div class="right floated content">
-            <div class="mini ui button blue">Add</div>
-          </div>
-          <div class="content">
-            <div class="header">{{ bucketlistitem.name }}</div>
+  <div class="bucketlists">
+    <h2>Add Bucketelist</h2>
+    <form class="ui form">
+      <div class="four wide field">
+        <label>Bucket name</label>
+        <input #bucketlistName placeholder="Add bucketlist..." [value]="addBucket" placeholder="bucket name">
+        <button class="ui blue button" (click)="createBucketlist(bucketlistName.value); bucketlistName.value">Create bucketlist</button>
+      </div>
+    </form>
+
+    <p>This is a list of your buckets.</p>
+    <ul>
+      <li *ngFor="let bucketlistitem of bucketlists" (click)='getSingleBucket(bucketlistitem.id)'>
+        <div class="ui celled list">
+          <div class="item">
+            <div class="right floated content">
+              <div class="mini ui button blue">Add</div>
+            </div>
+            <div class="content">
+              <div class="header">{{ bucketlistitem.name }}</div>
+            </div>
           </div>
         </div>
-      </div>
-    </li>
-  </ul>
+      </li>
+    </ul>
+  </div>
 
   <div class="list-items">
-      <router-outlet></router-outlet>
+    <router-outlet></router-outlet>
   </div>
+
 </div>

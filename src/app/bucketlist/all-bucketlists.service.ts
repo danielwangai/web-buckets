@@ -17,9 +17,13 @@ export class BucketlistService {
 
     return this._handleGetRequest(this.bucketlistAPIUrl);
   }
-
+  
   createBucketlist(data: any) {
     return this._handlePostRequest(this.bucketlistAPIUrl, data);
+  }
+
+  getSingleBucketlist(id: number) {
+    return this._handleGetRequest(this.bucketlistAPIUrl + '/'+ id);
   }
 
   // ### Helper functions

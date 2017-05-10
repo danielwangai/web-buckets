@@ -2,6 +2,8 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
+import { Router } from '@angular/router';
+
 import { Component, OnInit } from '@angular/core';
 import {IBucketlist} from '../../models/bucketlist';
 import { BucketlistService } from '../all-bucketlists.service';
@@ -9,7 +11,8 @@ import { BucketlistService } from '../all-bucketlists.service';
 @Component({
   selector: 'bucket-list',
   moduleId: module.id,
-  templateUrl: './bucketlist-list.component.html',
+  templateUrl: 'bucketlist-list.component.html',
+  styleUrls: ['bucketlist-list.component.scss'],
 })
 export class BucketlistListComponent implements OnInit {
   bucketlists: IBucketlist[];
@@ -17,7 +20,8 @@ export class BucketlistListComponent implements OnInit {
   addBucket: string = '';
 
   constructor (
-    private bucketlistService: BucketlistService
+    private bucketlistService: BucketlistService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,6 +36,11 @@ export class BucketlistListComponent implements OnInit {
         },
         (error: any) => this.errorMessage = <any>error
       );
+  }
+
+  getSingleBucket(id: number) {
+    console.log("bucket id"+ id);
+    this.router.navigate(['/bucketlist', id, 'items'])
   }
 
   createBucketlist(name: string): void {
