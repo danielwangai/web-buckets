@@ -1,3 +1,19 @@
 <div>
   This is a list of your buckets.
+  <ul>
+    <li *ngFor="let bucketlistitem of bucketlists" [routerLink]="['/buckelist', bucketlistitem.id ]">
+      {{ bucketlistitem | json }}
+    </li>
+    <div class="ui approve button" (click)="modal.show()">Approve</div>
+    <div>
+      <h2>Add Bucketelist</h2>
+      <input #bucketlistName placeholder="Add bucketlist..." [value]="addBucket">
+      <button (click)="createBucketlist(bucketlistName.value); bucketlistName.value">Create bucketlist</button>
+    </div>
+
+  </ul>
+
+  <div class="list-items">
+      <router-outlet></router-outlet>
+  </div>
 </div>
