@@ -3,14 +3,21 @@ import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 
+import { IUser } from './user';
+
 @Injectable()
 export class AuthenticationService {
   public token: string;
+  baseUrl: string = 'http://127.0.0.1:5000';
 
   constructor(private http: Http) {
     // set token if saved in local storage
     let currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.token = currentUser && currentUser.token;
+  }
+
+  register(user: IUser) {
+    return this.http.post(this.baseUrl + '/api/v1/auth/register', user);
   }
 
   login(username: string, password: string): Observable<boolean> {
