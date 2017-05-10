@@ -3,8 +3,8 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import { Component, OnInit } from '@angular/core';
-import {IBucketlist} from '../models/bucketlist';
-import { BucketlistService } from './all-bucketlists.service';
+import {IBucketlist} from '../../models/bucketlist';
+import { BucketlistService } from '../all-bucketlists.service';
 
 @Component({
   selector: 'bucket-list',
