@@ -1,5 +1,5 @@
 <div class="column">
-    <h2 class="login-header">Login</h2>
+    <h2 class="auth-header">Login</h2>
     <div class="ui form success">
         <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
             <div class="field" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
@@ -14,6 +14,7 @@
             </div>
             <div class="form-group">
                 <button [disabled]="loading" class="ui fluid large teal submit button">Login</button>
+                Dont have an account? <a [routerLink]="['/register']" class="btn btn-link">Register</a>
             </div>
             <div *ngIf="error" class="alert alert-danger">{{error}}</div>
         </form>

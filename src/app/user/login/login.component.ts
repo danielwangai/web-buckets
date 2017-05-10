@@ -6,7 +6,8 @@ import { AuthenticationService } from '../authentication.service';
 @Component({
   selector: 'login',
   moduleId: module.id,
-  templateUrl: 'login.component.html'
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.css'],
 })
 
 export class LoginComponent implements OnInit {
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
       console.log(result);
       if (result === true) {
         // login successful
-        this.router.navigate(['']);
+        this.router.navigate(['/bucketlist']);
       } else {
         // login failed
         this.error = 'Username or password is incorrect';
