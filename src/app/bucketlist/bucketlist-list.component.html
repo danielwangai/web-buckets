@@ -1,16 +1,30 @@
 <div>
+  <h2>Add Bucketelist</h2>
+  <form class="ui form">
+    <div class="four wide field">
+      <label>Bucket name</label>
+      <input #bucketlistName placeholder="Add bucketlist..." [value]="addBucket" placeholder="bucket name">
+      <button class="ui blue button"(click)="createBucketlist(bucketlistName.value); bucketlistName.value">Create bucketlist</button>
+    </div>
+  </form>
+  
+</div>
+
+<div>
   This is a list of your buckets.
   <ul>
     <li *ngFor="let bucketlistitem of bucketlists" [routerLink]="['/buckelist', bucketlistitem.id ]">
-      {{ bucketlistitem | json }}
+      <div class="ui celled list">
+        <div class="item">
+          <div class="right floated content">
+            <div class="mini ui button blue">Add</div>
+          </div>
+          <div class="content">
+            <div class="header">{{ bucketlistitem.name }}</div>
+          </div>
+        </div>
+      </div>
     </li>
-    <div class="ui approve button" (click)="modal.show()">Approve</div>
-    <div>
-      <h2>Add Bucketelist</h2>
-      <input #bucketlistName placeholder="Add bucketlist..." [value]="addBucket">
-      <button (click)="createBucketlist(bucketlistName.value); bucketlistName.value">Create bucketlist</button>
-    </div>
-
   </ul>
 
   <div class="list-items">
