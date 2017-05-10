@@ -10,13 +10,20 @@ import { BucketlistService } from './bucketlist/all-bucketlists.service';
 
 // services
 import { AuthenticationService } from './user/authentication.service';
+import { BucketlistItemService } from './bucketlist/bucketlist.items.service.js';
+import { AuthGuard } from './auth-guard.service';
 
 // components
 import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/login/register.component';
-import { ItemComponent } from './bucketlist/buckets/item.component';
+import { ItemComponent } from './bucketlist/bucketlist-items/bucketlist.item.component';
 
 const appRoutes: Routes = [
+  {
+    path: '',
+    redirectTo: 'bucketlist',
+    pathMatch: 'full'
+  },
   {
     path: 'login',
     component: LoginComponent
@@ -26,12 +33,12 @@ const appRoutes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'buckelist',
-    // canActivate: [],
+    path: 'bucketlist',
+    canActivate: [ AuthGuard ],
     component: BucketlistListComponent,
     children: [
       {
-        path: ':id',
+        path: ':id/items',
         component: ItemComponent
       }
     ]
@@ -52,7 +59,12 @@ const appRoutes: Routes = [
     ItemComponent,
     RegisterComponent
   ],
-  providers: [ BucketlistService, AuthenticationService ],
+  providers: [
+    BucketlistService,
+    AuthenticationService,
+    AuthGuard,
+    BucketlistItemService
+    ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
