@@ -25,8 +25,12 @@ export class ItemComponent implements OnInit {
 
   ngOnInit(): void {
     // get the bucket list
+    this.getBucketlistItems();
+  }
+
+  getBucketlistItems() {
     this.route.params.subscribe(param => {
-      console.log('param', param.id);
+      // console.log('param', param.id);
       // fetch items from bucketlist with id $id
       this.bucketlistItem.getBucketlistItems(param.id).subscribe((items: any) => {
         this.items = items
