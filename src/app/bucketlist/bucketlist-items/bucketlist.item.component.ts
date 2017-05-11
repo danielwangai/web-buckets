@@ -38,4 +38,13 @@ export class ItemComponent implements OnInit {
       });
     })
   }
+
+  // delete bucketlist item
+  deleteBucketlistItem(bucketlist_id: number, item_id: number) {
+    this.bucketlistItem.deleteBucketlistItem(
+      bucketlist_id, item_id).subscribe(
+        () => this.getBucketlistItems()
+      )
+
+  }
 }
