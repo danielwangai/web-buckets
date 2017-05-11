@@ -1,28 +1,30 @@
 <div class="bucketlists-holder">
 
   <div class="bucketlists">
-    <h2>Add Bucketelist</h2>
+    <h2>Bucketelist</h2>
     <form class="ui form">
-      <div class="four wide field">
+      <div class="field">
         <label>Bucket name</label>
-        <input #bucketlistName placeholder="Add bucketlist..." [value]="addBucket" placeholder="bucket name">
-        <button class="ui blue button" (click)="createBucketlist(bucketlistName.value); bucketlistName.value">Create bucketlist</button>
+        <input id="bucket-name" #bucketlistName placeholder="Add bucketlist..." [value]="addBucket" placeholder="bucket name">
+        <button class="ui fluid large teal submit button" (click)="createBucketlist(bucketlistName.value); bucketlistName.value">Create bucketlist</button>
       </div>
     </form>
 
     <p>This is a list of your buckets.</p>
     <ul>
-      <li *ngFor="let bucketlistitem of bucketlists" (click)='getSingleBucket(bucketlistitem.id)'>
-        <div class="ui celled list">
+      <li *ngFor="let bucketlistitem of bucketlists">
+        <div class="ui middle aligned divided list">
           <div class="item">
-            <div class="right floated content">
-              <div class="mini ui button blue">Add</div>
+            <div  (click)="getSingleBucket(bucketlistitem.id)" class="header">{{ bucketlistitem.name }}</div>
+            
+            <div class="action-btns">
+              <i class="fa fa-trash-o" (click)="deleteBucket(bucketlistitem.id)" aria-hidden="true"></i>
+              <i class="fa fa-pencil" aria-hidden="true"></i>
             </div>
-            <div class="content">
-              <div class="header">{{ bucketlistitem.name }}</div>
-            </div>
+
           </div>
         </div>
+        <hr />
       </li>
     </ul>
   </div>

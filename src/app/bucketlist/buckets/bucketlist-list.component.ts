@@ -12,7 +12,7 @@ import { BucketlistService } from '../all-bucketlists.service';
   selector: 'bucket-list',
   moduleId: module.id,
   templateUrl: 'bucketlist-list.component.html',
-  styleUrls: ['bucketlist-list.component.scss'],
+  styleUrls: ['bucketlist-list.component.css'],
 })
 export class BucketlistListComponent implements OnInit {
   bucketlists: IBucketlist[];
@@ -40,7 +40,16 @@ export class BucketlistListComponent implements OnInit {
 
   getSingleBucket(id: number) {
     console.log("bucket id"+ id);
-    this.router.navigate(['/bucketlist', id, 'items'])
+    this.router.navigate(['/bucketlist', id, 'items'])    
+  }
+
+  deleteBucket(bucketlistId: number) {
+    // delete bucketlist
+    this.bucketlistService.deleteBucketlist(bucketlistId)
+      .subscribe(res  =>{
+        this.getBucketlist();
+        console.log("Deleted params", res)
+      })
   }
 
   createBucketlist(name: string): void {
