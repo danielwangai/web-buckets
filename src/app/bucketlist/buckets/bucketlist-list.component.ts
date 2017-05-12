@@ -23,6 +23,8 @@ export class BucketlistListComponent implements OnInit {
   addBucket: string = '';
   searchTerm: string = '';
 
+  bucket_name: string;
+
   constructor (
     private bucketlistService: BucketlistService,
     private router: Router
@@ -88,8 +90,9 @@ export class BucketlistListComponent implements OnInit {
     $('.ui.modal.bucket-create').modal('show');
   }
 
-  openUpdateDialog(bucketlistId: number) {
-    this.bucketlistId = bucketlistId;
+  openUpdateDialog(bucketlist: any) {
+    this.bucketlistId = bucketlist.id;
+    this.bucket_name = bucketlist.name;
     $('.ui.modal.bucket-update').modal('show');
   }
 }
