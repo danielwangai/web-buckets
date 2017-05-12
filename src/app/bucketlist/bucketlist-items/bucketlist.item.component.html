@@ -9,8 +9,8 @@
         </button>
     </div>
     
-    <div class="ui middle aligned divided list">
-        <button class="ui primary button">
+    <div *ngIf="items.length" class="ui middle aligned divided list">
+        <button class="ui primary button" (click)="openItemCreateDialog()">
             <i class="fa fa-plus" aria-hidden="true"></i>
             Add Item
         </button>
@@ -24,4 +24,24 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="ui modal item-create">
+  <i class="close icon"></i>
+  <div class="header">
+    Add Bucketlist Item
+  </div>
+  <div class="content">
+    <form class="ui form">
+      <div class="field">
+        <label>Bucket name</label>
+        <input id="item-name" #itemName placeholder="Add Item..." [value]="addItem" placeholder="item name">
+      </div>
+    </form>  
+  </div>
+  <div class="actions">
+    <div class="ui positive right teal button" (click)="createBucketlist(bucketlistName.value); bucketlistName.value">
+      <i class="fa fa-plus"></i> Create
+    </div>
+  </div>
 </div>

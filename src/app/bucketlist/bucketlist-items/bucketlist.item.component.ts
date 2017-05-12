@@ -9,6 +9,8 @@ import {IBucketlist} from '../../models/bucketlist';
 import { BucketlistService } from '../all-bucketlists.service';
 import { BucketlistItemService } from '../bucketlist.items.service';
 
+declare var $: any;
+
 @Component({
   selector: 'item-component',
   moduleId: module.id,
@@ -32,7 +34,7 @@ export class ItemComponent implements OnInit {
       this.getBucketlistItems();
     })
   }
-
+  
   getBucketlistItems() {
     this.route.params.subscribe(param => {
       // console.log('param', param.id);
@@ -58,5 +60,10 @@ export class ItemComponent implements OnInit {
         console.log(response);
       })
     this.router.navigate(['/bucketlist'])
+  }
+
+  openItemCreateDialog() {
+    // modal for creating bucketlist item
+    $('.ui.modal.item-create').modal('show');
   }
 }
