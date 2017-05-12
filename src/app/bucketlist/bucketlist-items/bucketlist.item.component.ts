@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {IBucketlist} from '../../models/bucketlist';
 import { BucketlistService } from '../all-bucketlists.service';
 import { BucketlistItemService } from '../bucketlist.items.service';
@@ -13,19 +13,24 @@ import { BucketlistItemService } from '../bucketlist.items.service';
   selector: 'item-component',
   moduleId: module.id,
   templateUrl:  'bucketlist.item.component.html',
+  styleUrls: ['bucketlist.item.component.css'],
 })
 export class ItemComponent implements OnInit {
-  @Input() bucketlist: IBucketlist;
+  bucketlistId: number;
 
   items: any[] = [];
   constructor (
     private route: ActivatedRoute,
-    private bucketlistItem: BucketlistItemService
+    private bucketlistItem: BucketlistItemService,
+    private router: Router
     ) {}
 
   ngOnInit(): void {
     // get the bucket list
-    this.getBucketlistItems();
+    this.route.params.subscribe(params => {
+      this.bucketlistId = params.id
+      this.getBucketlistItems();
+    })
   }
 
   getBucketlistItems() {
@@ -45,6 +50,13 @@ export class ItemComponent implements OnInit {
       bucketlist_id, item_id).subscribe(
         () => this.getBucketlistItems()
       )
+  }
 
+  deleteBucketlist() {
+    this.bucketlistItem.deleteBucketlist(this.bucketlistId)
+      .subscribe(response => {
+        console.log(response);
+      })
+    this.router.navigate(['/bucketlist'])
   }
 }

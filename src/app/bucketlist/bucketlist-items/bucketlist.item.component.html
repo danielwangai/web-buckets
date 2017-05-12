@@ -10,10 +10,14 @@
     </div>
     
     <div class="ui middle aligned divided list">
+        <button class="ui primary button">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Add Item
+        </button>
         <div class="item" *ngFor="let item of items">
             <div class="right floated content">
-                    <i class="fa fa-trash-o" (click)="deleteBucketlistItem(item.bucketlist_id, item.id)" aria-hidden="true"></i>
                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i class="fa fa-trash-o delete" (click)="deleteBucketlistItem(item.bucketlist_id, item.id)" aria-hidden="true"></i>
             </div>
             <div class="content">
                 {{ item.name }}

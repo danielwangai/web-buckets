@@ -6,6 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 
 import { IItem } from './bucketlist-items/item';
+import { IBucketlist } from '../models/bucketlist';
 
 @Injectable()
 export class BucketlistItemService {
@@ -23,6 +24,10 @@ export class BucketlistItemService {
     deleteBucketlistItem(bucketlist_id: number, item_id: number): Observable<IItem> {
       return this._handleDeleteRequest(this.bucketlistAPIUrl + 
         '/api/v1/bucketlists/'+bucketlist_id+'/items/'+ item_id);
+    }
+
+    deleteBucketlist(bucketlistId: number): Observable<IBucketlist> {
+      return this._handleDeleteRequest(this.bucketlistAPIUrl + '/api/v1/bucketlists/'+ bucketlistId);
     }
 
     private _handleGetRequest(url: string) {
