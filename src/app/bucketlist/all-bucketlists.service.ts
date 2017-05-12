@@ -30,6 +30,10 @@ export class BucketlistService {
     return this._handleDeleteRequest(this.bucketlistAPIUrl + '/'+ bucketlistId);
   }
 
+  updateBucketlist(bucketlistId: number, bucketName: any) {
+    return this._handlePutRequest(this.bucketlistAPIUrl + '/' + bucketlistId, bucketName)
+  }
+
   // ### Helper functions
   private _handleGetRequest(url: string) {
     let { token } = JSON.parse(localStorage.getItem('currentUser'));
@@ -80,7 +84,7 @@ export class BucketlistService {
           .catch(this.handleError)
     }
 
-  private _handlePutRequest(url: string, data: any) {
+  private _handlePutRequest(url: string, bucketName: any) {
     let { token } = JSON.parse(localStorage.getItem('currentUser'));
     console.log(token);
 
@@ -92,7 +96,7 @@ export class BucketlistService {
 
     const options = new RequestOptions({ headers });
 
-    return this.http.put(url, JSON.stringify({'name': data}), options)
+    return this.http.put(url, JSON.stringify({'name': bucketName}), options)
       .map(this.extractData)
       .catch(this.handleError)
   }

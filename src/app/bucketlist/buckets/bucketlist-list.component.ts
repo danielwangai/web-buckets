@@ -18,6 +18,7 @@ declare var $: any;
 })
 export class BucketlistListComponent implements OnInit {
   bucketlists: IBucketlist[] = [];
+  bucketlistId: number;
   errorMessage: string;
   addBucket: string = '';
   searchTerm: string = '';
@@ -66,7 +67,29 @@ export class BucketlistListComponent implements OnInit {
     );
   }
 
-  openDialog() {
-    $('.ui.modal').modal('show');
+  updateBucketlist(bucketName: string) {
+    // update a bucketlist
+    bucketName = bucketName.trim();
+    if (! bucketName ) {
+      console.log('name required');
+      return;
+    }
+    this.bucketlistService.updateBucketlist(this.bucketlistId, bucketName)
+      .subscribe(
+        response => {
+          console.log("Update response")
+          console.log(response)
+          this.getBucketlist()
+        }
+      )
+  }
+
+  openCreateDialog() {
+    $('.ui.modal.bucket-create').modal('show');
+  }
+
+  openUpdateDialog(bucketlistId: number) {
+    this.bucketlistId = bucketlistId;
+    $('.ui.modal.bucket-update').modal('show');
   }
 }
