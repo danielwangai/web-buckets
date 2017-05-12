@@ -1,14 +1,6 @@
 <div class="bucketlists-holder">
-
   <div class="bucketlists">
     <h2>Bucketelist</h2>
-    <form class="ui form">
-      <div class="field">
-        <label>Bucket name</label>
-        <input id="bucket-name" #bucketlistName placeholder="Add bucketlist..." [value]="addBucket" placeholder="bucket name">
-        <button class="ui fluid large teal submit button" (click)="createBucketlist(bucketlistName.value); bucketlistName.value">Create bucketlist</button>
-      </div>
-    </form>
 
     <p>This is a list of your buckets.</p>
     <ul>
@@ -33,4 +25,23 @@
     <router-outlet></router-outlet>
   </div>
 
+</div>
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Create Bucketlist
+  </div>
+  <div class="content">
+    <form class="ui form">
+      <div class="field">
+        <label>Bucket name</label>
+        <input id="bucket-name" #bucketlistName placeholder="Add bucketlist..." [value]="addBucket" placeholder="bucket name">
+      </div>
+    </form>  
+  </div>
+  <div class="actions">
+    <div class="ui positive right teal button" (click)="createBucketlist(bucketlistName.value); bucketlistName.value">
+      <i class="fa fa-plus"></i> Create
+    </div>
+  </div>
 </div>

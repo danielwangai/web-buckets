@@ -18,6 +18,9 @@ import { LoginComponent } from './user/login/login.component';
 import { RegisterComponent } from './user/login/register.component';
 import { ItemComponent } from './bucketlist/bucketlist-items/bucketlist.item.component';
 
+// pipes
+import { SearchPipe } from './app.pipes';
+
 const appRoutes: Routes = [
   {
     path: '',

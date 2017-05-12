@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 import {IBucketlist} from '../../models/bucketlist';
 import { BucketlistService } from '../all-bucketlists.service';
 
+declare var $: any;
+
 @Component({
   selector: 'bucket-list',
   moduleId: module.id,
@@ -15,9 +17,10 @@ import { BucketlistService } from '../all-bucketlists.service';
   styleUrls: ['bucketlist-list.component.css'],
 })
 export class BucketlistListComponent implements OnInit {
-  bucketlists: IBucketlist[];
+  bucketlists: IBucketlist[] = [];
   errorMessage: string;
   addBucket: string = '';
+  searchTerm: string = '';
 
   constructor (
     private bucketlistService: BucketlistService,
@@ -61,5 +64,9 @@ export class BucketlistListComponent implements OnInit {
     this.bucketlistService.createBucketlist(name).subscribe(
       () => this.getBucketlist()
     );
+  }
+
+  openDialog() {
+    $('.ui.modal').modal('show');
   }
 }
