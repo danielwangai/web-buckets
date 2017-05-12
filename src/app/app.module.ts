@@ -60,7 +60,8 @@ const appRoutes: Routes = [
     BucketlistListComponent,
     LoginComponent,
     ItemComponent,
-    RegisterComponent
+    RegisterComponent,
+    SearchPipe
   ],
   providers: [
     BucketlistService,
