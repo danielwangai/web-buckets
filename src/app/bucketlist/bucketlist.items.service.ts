@@ -17,6 +17,10 @@ export class BucketlistItemService {
         private http: Http
     ) { }
 
+    addItem(bucketlistId: number, ItemName: string): Observable<IItem[]> {
+      return this._handlePostRequest(this.bucketlistAPIUrl + '/api/v1/bucketlists/'+bucketlistId + '/items', ItemName);
+    }
+
     getBucketlistItems(id: number): Observable<IItem[]> {
         return this._handleGetRequest(this.bucketlistAPIUrl + '/api/v1/bucketlists/'+id+'/items');
     }
@@ -28,6 +32,23 @@ export class BucketlistItemService {
 
     deleteBucketlist(bucketlistId: number): Observable<IBucketlist> {
       return this._handleDeleteRequest(this.bucketlistAPIUrl + '/api/v1/bucketlists/'+ bucketlistId);
+    }
+
+    private _handlePostRequest(url: string, itemName: string) {
+      // POST request to add item
+      let { token } = JSON.parse(localStorage.getItem('currentUser'));
+
+        const headers = new Headers({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': token
+        });
+
+        const options = new RequestOptions({ headers });
+
+        return this.http.post(url, JSON.stringify({'name': itemName}), options)
+          .map(this.extractData)
+          .catch(this.handleError)
     }
 
     private _handleGetRequest(url: string) {
