@@ -20,6 +20,7 @@ declare var $: any;
 export class ItemComponent implements OnInit {
   bucketlistId: number;
 
+  addBucketItem: string = '';
   items: any[] = [];
   constructor (
     private route: ActivatedRoute,
@@ -34,7 +35,21 @@ export class ItemComponent implements OnInit {
       this.getBucketlistItems();
     })
   }
-  
+
+  addItem(bucketlist_id: number, itemName: string) {
+    console.log("bucket id on click", bucketlist_id, ' plus ', itemName)
+    itemName = itemName.trim();
+    if (!itemName) {
+      console.log("Set item name!!!");
+      return
+    }
+
+    this.bucketlistItem.addItem(this.bucketlistId, itemName)
+      .subscribe(
+        () => this.getBucketlistItems()
+      )
+  }
+
   getBucketlistItems() {
     this.route.params.subscribe(param => {
       // console.log('param', param.id);
