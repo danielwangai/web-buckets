@@ -5,7 +5,7 @@
         <input #searchData [(ngModel)]="searchTerm" placeholder="Search bucketlist ..." required>
       </div>
     </div>
-    <button class="ui button" (click)="openDialog()">add bucket</button>
+    <button class="ui button" (click)="openCreateDialog()">add bucket</button>
 
   <div class="bucketlists">
     <h2>Bucketelist</h2>
@@ -19,7 +19,7 @@
             
             <div class="action-btns">
               <i class="fa fa-trash-o" (click)="deleteBucket(bucketlistitem.id)" aria-hidden="true"></i>
-              <i class="fa fa-pencil" aria-hidden="true"></i>
+              <i class="fa fa-pencil" aria-hidden="true" (click)="openUpdateDialog(bucketlistitem.id)"></i>
             </div>
 
           </div>
@@ -34,7 +34,9 @@
   </div>
 
 </div>
-<div class="ui modal">
+
+<!-- Create bucketlist modal -->
+<div class="ui modal bucket-create">
   <i class="close icon"></i>
   <div class="header">
     Create Bucketlist
@@ -50,6 +52,27 @@
   <div class="actions">
     <div class="ui positive right teal button" (click)="createBucketlist(bucketlistName.value); bucketlistName.value">
       <i class="fa fa-plus"></i> Create
+    </div>
+  </div>
+</div>
+
+<!-- Update bucketlist modal -->
+<div class="ui modal bucket-update">
+  <i class="close icon"></i>
+  <div class="header">
+    Update Bucketlist
+  </div>
+  <div class="content">
+    <form class="ui form">
+      <div class="field">
+        <label>Bucket name</label>
+        <input id="bucket-name" #bucketlistName placeholder="Add bucketlist..." [value]="addBucket" placeholder="bucket name">
+      </div>
+    </form>  
+  </div>
+  <div class="actions">
+    <div class="ui positive right teal button" (click)="updateBucketlist(bucketlistName.value); bucketlistName.value">
+      <i class="fa fa-plus"></i> Update
     </div>
   </div>
 </div>
