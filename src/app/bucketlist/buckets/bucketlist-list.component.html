@@ -1,32 +1,29 @@
 <div class="bucketlists-holder">
-  <!-- Search here -->
+  <div class="bucketlists">
+    <!-- Search here -->
     <div class="ui form">
       <div class="field">
         <input #searchData [(ngModel)]="searchTerm" placeholder="Search bucketlist ..." required>
       </div>
     </div>
-    <button class="ui button" (click)="openCreateDialog()">add bucket</button>
-
-  <div class="bucketlists">
     <h2>Bucketelist</h2>
-
-    <p>This is a list of your buckets.</p>
-    <ul>
-      <li *ngFor="let bucketlistitem of bucketlists | search : searchTerm">
-        <div class="ui middle aligned divided list">
+    <div>
+      <div *ngFor="let bucketlistitem of bucketlists | search : searchTerm">
           <div class="item">
-            <div  (click)="getSingleBucket(bucketlistitem.id)" class="header">{{ bucketlistitem.name }}</div>
+            <div  (click)="getSingleBucket(bucketlistitem.id)" class="bucketlist-name">{{ bucketlistitem.name }}</div>
             
             <div class="action-btns">
               <i class="fa fa-trash-o" (click)="deleteBucket(bucketlistitem.id)" aria-hidden="true"></i>
               <i class="fa fa-pencil" aria-hidden="true" (click)="openUpdateDialog(bucketlistitem)"></i>
             </div>
-
           </div>
+      </div>
+      <div class="add-bucket-container">
+        <div class="add-bucket" (click)="openCreateDialog()">
+          <i class="fa fa-plus"></i> Add Bucketlist
         </div>
-        <hr />
-      </li>
-    </ul>
+      </div>
+    </div>
   </div>
 
   <div class="list-items">
