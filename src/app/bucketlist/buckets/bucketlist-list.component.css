@@ -1,0 +1,51 @@
+.bucketlists-holder {
+    display: flex;
+    width: 100%;   
+}
+.bucketlists {
+    width: 20%;     
+    display: flex;
+    flex-direction: column;
+    margin-right: 1em;
+}
+ .list-items {
+    flex-direction: column;
+    width: 33%;
+}
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .51em;
+    border: .51px solid #a5d8ff;
+    margin-bottom: 1px;
+    align-items: center;
+    background: #a5d8ff;
+}
+.bucketlist-name {
+    text-transform: capitalize;
+    font-size: 1.1em;
+    margin-right: 1em;
+}
+
+.bucketlist-name:hover {
+    cursor: pointer;
+}
+.items-list {
+    list-style: none;
+    padding: 0;
+}
+
+.action-btns {
+}
+
+.fa-trash-o {
+    margin-right: 1em
+}
+i:hover {
+    cursor: pointer;
+    opacity: .6;
+}
+h2 {
+    color: #000;
+}
