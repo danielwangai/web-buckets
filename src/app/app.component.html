@@ -3,9 +3,8 @@
     <a [routerLink]="['/buckelist']">Home</a>
     <a *ngIf="!authService.isAuth()" [routerLink]="['/login']">Login</a>
     <a *ngIf="authService.isAuth()" (click)="logout()">Logout</a>
-    <pre>{{ authService.isAuth() | json }}</pre>
   </header>
 </div>
-<div>
+<div class="container">
   <router-outlet></router-outlet>
 </div>
