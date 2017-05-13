@@ -19,8 +19,10 @@ declare var $: any;
 })
 export class ItemComponent implements OnInit {
   bucketlistId: number;
+  bucketItemId: number;
 
-  addBucketItem: string = '';
+  bucketItemName: string = '';
+  isDone: boolean;
   items: any[] = [];
   constructor (
     private route: ActivatedRoute,
@@ -77,8 +79,31 @@ export class ItemComponent implements OnInit {
     this.router.navigate(['/bucketlist'])
   }
 
+  updateBucketlistItem(itemName: string) {
+    itemName = itemName.trim();
+    if ( !itemName ) {
+      console.log("Name required.")
+      return
+    }
+    this.bucketlistItem.updateBucketlistItem(this.bucketlistId, this.bucketItemId, itemName, this.isDone)
+      .subscribe(response => {
+        console.log("update response")
+        console.log(response)
+        this.getBucketlistItems()
+      })
+  }
+
   openItemCreateDialog() {
     // modal for creating bucketlist item
     $('.ui.modal.item-create').modal('show');
+  }
+
+  openUpdateDialog(itemData: any) {
+    this.bucketItemName = itemData.name
+    this.bucketlistId = itemData.bucketlist_id,
+    this.bucketItemId = itemData.id
+    this.isDone = itemData.status
+    // modal for creating bucketlist item
+    $('.ui.modal.item-update').modal('show');
   }
 }

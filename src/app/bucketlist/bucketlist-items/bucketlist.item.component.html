@@ -16,7 +16,7 @@
         </button>
         <div class="item" *ngFor="let item of items">
             <div class="right floated content">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <i class="fa fa-pencil" aria-hidden="true" (click)="openUpdateDialog(item)"></i>
                     <i class="fa fa-trash-o delete" (click)="deleteBucketlistItem(item.bucketlist_id, item.id)" aria-hidden="true"></i>
             </div>
             <div class="content">
@@ -25,7 +25,7 @@
         </div>
     </div>
 </div>
-
+<!-- Create item modal -->
 <div class="ui modal item-create">
   <i class="close icon"></i>
   <div class="header">
@@ -34,14 +34,39 @@
   <div class="content">
     <form class="ui form">
       <div class="field">
-        <label>Bucket name</label>
-        <input id="item-name" #itemName placeholder="Add Item..." [value]="addBucketItem" placeholder="item name">
+        <label>Item name</label>
+        <input id="item-name" #itemName placeholder="Add Item..." [value]="bucketItemName" placeholder="item name">
       </div>
     </form>  
   </div>
   <div class="actions">
     <div class="ui positive right teal button" (click)="addItem(bucketlistId, itemName.value); itemName.value">
       <i class="fa fa-plus"></i> Add Item
+    </div>
+  </div>
+</div>
+
+<!-- Update item modal -->
+<div class="ui modal item-update">
+  <i class="close icon"></i>
+  <div class="header">
+    Update Bucketlist Item
+  </div>
+  <div class="content">
+    <form class="ui form">
+      <div class="field">
+        <label>Bucket name</label>
+        <input id="item-name" #itemName placeholder="Update Item..." [value]="bucketItemName" placeholder="item name">
+      </div>
+      <div class="ui checkbox">
+        <input type="checkbox" name="isDone" [(ngModel)]="isDone">
+        <label>Complete</label>
+    </div>
+    </form>  
+  </div>
+  <div class="actions">
+    <div class="ui positive right teal button" (click)="updateBucketlistItem(itemName.value)">
+      <i class="fa fa-plus"></i> Update Item
     </div>
   </div>
 </div>

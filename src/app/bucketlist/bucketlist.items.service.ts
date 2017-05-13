@@ -34,6 +34,10 @@ export class BucketlistItemService {
       return this._handleDeleteRequest(this.bucketlistAPIUrl + '/api/v1/bucketlists/'+ bucketlistId);
     }
 
+    updateBucketlistItem(bucketlistId: number, itemId: number, itemName: string, isDone: boolean) {
+      return this._handlePutRequest(this.bucketlistAPIUrl + '/api/v1/bucketlists/'+bucketlistId + '/items/'+ itemId, itemName, isDone)
+    }
+
     private _handlePostRequest(url: string, itemName: string) {
       // POST request to add item
       let { token } = JSON.parse(localStorage.getItem('currentUser'));
@@ -79,6 +83,22 @@ export class BucketlistItemService {
         const options = new RequestOptions({ headers });
 
         return this.http.delete(url, options)
+          .map(this.extractData)
+          .catch(this.handleError)
+    }
+
+    private _handlePutRequest(url: string, name: any, isDone: boolean) {
+      // update bucketlist item
+      let { token } = JSON.parse(localStorage.getItem('currentUser'));
+        const headers = new Headers({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Authorization': token
+        });
+
+        const options = new RequestOptions({ headers });
+
+        return this.http.put(url, JSON.stringify({"name": name, "status": isDone}), options)
           .map(this.extractData)
           .catch(this.handleError)
     }
