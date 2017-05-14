@@ -65,9 +65,9 @@ export class ItemComponent implements OnInit {
   }
 
   // delete bucketlist item
-  deleteBucketlistItem(bucketlist_id: number, item_id: number) {
+  deleteBucketlistItem() {
     this.bucketlistItem.deleteBucketlistItem(
-      bucketlist_id, item_id).subscribe(
+      this.bucketlistId, this.bucketItemId).subscribe(
         () => this.getBucketlistItems()
       )
   }
@@ -106,5 +106,11 @@ export class ItemComponent implements OnInit {
     this.isDone = itemData.status
     // modal for creating bucketlist item
     $('.ui.modal.item-update').modal('show');
+  }
+
+  openDeleteDialog(item: any) {
+    this.bucketlistId = item.bucketlist_id
+    this.bucketItemId = item.id
+    $('.small.modal.delete-item').modal('show');
   }
 }

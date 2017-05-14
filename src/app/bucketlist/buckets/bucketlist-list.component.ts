@@ -100,6 +100,6 @@ export class BucketlistListComponent implements OnInit {
 
   deleteConfirmationDialog(bucketlist: any) {
     this.bucketlistId = bucketlist.id
-    $('.small.modal').modal('show');
+    $('.small.modal.delete-bucket').modal('show');
   }
 }
