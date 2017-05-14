@@ -14,8 +14,13 @@ export class BucketlistService {
   constructor(private http: Http) {}
 
   getBucketlists(): Observable<IBucketlist[]> {
+      // load with page 1 as default
+      return this._handleGetRequest(this.bucketlistAPIUrl+'?page=1&limit=5');
+  }
 
-    return this._handleGetRequest(this.bucketlistAPIUrl+'?page=1&limit=5');
+  nextPageBucketlists(nextPage: number): Observable<IBucketlist[]> {
+      // Load buckets of the next page
+      return this._handleGetRequest(this.bucketlistAPIUrl+'?page='+ nextPage+ '&limit=5');
   }
 
   createBucketlist(data: any) {

@@ -1,9 +1,9 @@
 .bucketlists-holder {
     display: flex;
-    width: 100%;   
+    width: 100%;
 }
 .bucketlists {
-    width: 30%;     
+    width: 30%;
     display: flex;
     flex-direction: column;
     margin-right: 1em;
@@ -94,4 +94,22 @@ h2 {
     margin-bottom: 1em;
     width: 92%;
     margin-left: 4%;
+}
+
+/*pagination navigation buttons*/
+.fa-arrow-circle-o-right {
+    float: right;
+    margin-right: 1.2em;
+    margin-top: .7em;
+    color: #00b5ad;
+}
+
+.fa-arrow-circle-o-left {
+    margin-left: 1.2em;
+    margin-top: .7em;
+    color: #00b5ad;
+}
+
+.fa-arrow-circle-o-right:hover, .fa-arrow-circle-o-left {
+    cursor: pointer;
 }

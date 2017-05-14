@@ -24,6 +24,9 @@ export class BucketlistListComponent implements OnInit {
   searchTerm: string = '';
 
   bucket_name: string;
+  // pagination variables
+  nextPage: any;
+  prevPage: any;
 
   constructor (
     private bucketlistService: BucketlistService,
@@ -38,8 +41,14 @@ export class BucketlistListComponent implements OnInit {
     this.bucketlistService.getBucketlists()
       .subscribe((bucketlists: IBucketlist[]) => {
           this.bucketlists = bucketlists.bucketlists;
+          // update pagination pages
+          this.nextPage = bucketlists.next_page_number
+          this.prevPage = bucketlists.prev_page_number
           console.log("params fetch paginate");
           console.log(bucketlists.bucketlists);
+          console.log("Pagination values");
+          console.log(this.nextPage);
+          console.log(this.prevPage);
         },
         (error: any) => this.errorMessage = <any>error
       );
@@ -48,6 +57,21 @@ export class BucketlistListComponent implements OnInit {
   getSingleBucket(id: number) {
     console.log("bucket id"+ id);
     this.router.navigate(['/bucketlists', id, 'items'])
+  }
+
+  // next bucket page
+  nextBucketPage() {
+      this.bucketlistService.nextPageBucketlists(this.nextPage)
+        .subscribe((bucketlists: IBucketlist[]) => {
+            this.bucketlists = bucketlists.bucketlists;
+            // update pagination pages
+            this.nextPage = bucketlists.next_page_number
+            this.prevPage = bucketlists.prev_page_number
+            console.log("nextPage params")
+            console.log(bucketlists)
+        },
+        (error: any) => this.errorMessage = <any>error
+    )
   }
 
   deleteBucket() {
