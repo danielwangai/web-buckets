@@ -54,8 +54,6 @@ export class ItemComponent implements OnInit {
 
   getBucketlistItems() {
     this.route.params.subscribe(param => {
-      console.log('param');
-      console.log(param.id);
       // fetch items from bucketlist with id $id
       this.bucketlistItem.getBucketlistItems(param.id).subscribe((items: any) => {
         this.items = items
@@ -77,7 +75,7 @@ export class ItemComponent implements OnInit {
       .subscribe(response => {
         console.log(response);
       })
-    this.router.navigate(['/bucketlist'])
+    this.router.navigate(['/bucketlists'])
   }
 
   updateBucketlistItem(itemName: string) {

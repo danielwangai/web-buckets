@@ -37,8 +37,9 @@ export class BucketlistListComponent implements OnInit {
   getBucketlist() {
     this.bucketlistService.getBucketlists()
       .subscribe((bucketlists: IBucketlist[]) => {
-          this.bucketlists = bucketlists;
-          console.log(bucketlists);
+          this.bucketlists = bucketlists.bucketlists;
+          console.log("params fetch paginate");
+          console.log(bucketlists.bucketlists);
         },
         (error: any) => this.errorMessage = <any>error
       );
@@ -46,7 +47,7 @@ export class BucketlistListComponent implements OnInit {
 
   getSingleBucket(id: number) {
     console.log("bucket id"+ id);
-    this.router.navigate(['/bucketlist', id, 'items'])    
+    this.router.navigate(['/bucketlists', id, 'items'])
   }
 
   deleteBucket() {

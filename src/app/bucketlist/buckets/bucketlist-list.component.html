@@ -3,7 +3,7 @@
     <h2>Web Buckets</h2>
 
     <div class="ui divider"></div>
-    
+
     <!-- Search here -->
     <div class="ui form">
       <div class="field">
@@ -19,7 +19,7 @@
       <div *ngFor="let bucketlistitem of bucketlists | search : searchTerm">
           <div class="item">
             <div  (click)="getSingleBucket(bucketlistitem.id)" class="bucketlist-name">{{ bucketlistitem.name }}</div>
-            
+
             <div class="action-btns">
               <i class="fa fa-pencil" aria-hidden="true" (click)="openUpdateDialog(bucketlistitem)"></i>
               <i class="fa fa-trash-o" (click)="deleteConfirmationDialog(bucketlistitem)" aria-hidden="true"></i>
@@ -47,7 +47,7 @@
         <label>Bucket name</label>
         <input id="bucket-name" #bucketlistName placeholder="Add bucketlist..." [value]="addBucket" placeholder="bucket name">
       </div>
-    </form>  
+    </form>
   </div>
   <div class="actions">
     <div class="ui positive right teal button" (click)="createBucketlist(bucketlistName.value); bucketlistName.value">
@@ -68,7 +68,7 @@
         <label>Bucket name</label>
         <input id="bucket-name" #bucketUpdateName placeholder="Add bucketlist..." [value]="bucketItemName" placeholder="bucket name">
       </div>
-    </form>  
+    </form>
   </div>
   <div class="actions">
     <div class="ui positive right teal button" (click)="updateBucketlist(bucketUpdateName.value); bucketUpdateName.value">

@@ -15,9 +15,9 @@ export class BucketlistService {
 
   getBucketlists(): Observable<IBucketlist[]> {
 
-    return this._handleGetRequest(this.bucketlistAPIUrl);
+    return this._handleGetRequest(this.bucketlistAPIUrl+'?page=1&limit=5');
   }
-  
+
   createBucketlist(data: any) {
     return this._handlePostRequest(this.bucketlistAPIUrl, data);
   }
