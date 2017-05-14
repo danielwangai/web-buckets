@@ -28,7 +28,7 @@
       </div>
       <div class="">
           <i class="fa fa-arrow-circle-o-right" aria-hidden="true" (click)="nextBucketPage()"></i>
-          <i class="fa fa-arrow-circle-o-left" aria-hidden="true"></i>
+          <i class="fa fa-arrow-circle-o-left" aria-hidden="true" (click)="prevBucketPage()"></i>
       </div>
     </div>
   </div>
@@ -98,7 +98,7 @@
 <div class="ui small modal no-more-buckets">
   <i class="close icon"></i>
   <div class="header warning-header">Alert</div>
-  <div *ngIf="!nextPage" class="content warning-content">
+  <div *ngIf="!nextPage || !prevPage" class="content warning-content">
     No more buckets to display
   </div>
   <div class="actions">

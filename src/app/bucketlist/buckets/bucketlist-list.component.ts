@@ -80,6 +80,25 @@ export class BucketlistListComponent implements OnInit {
     )
   }
 
+  prevBucketPage() {
+      if (!this.prevPage) {
+          // display alert modal if next page is null
+          $('.small.modal.no-more-buckets').modal('show');
+          return
+      }
+      this.bucketlistService.prevPageBucketlists(this.prevPage)
+        .subscribe((bucketlists: IBucketlist[]) => {
+            this.bucketlists = bucketlists.bucketlists;
+            // update pagination pages
+            this.nextPage = bucketlists.next_page_number
+            this.prevPage = bucketlists.prev_page_number
+            console.log("prev page params")
+            console.log(bucketlists)
+        },
+        (error: any) => this.errorMessage = <any>error
+    )
+  }
+
   deleteBucket() {
     // delete bucketlist
     this.bucketlistService.deleteBucketlist(this.bucketlistId)

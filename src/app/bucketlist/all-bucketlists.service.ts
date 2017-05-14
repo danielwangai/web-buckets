@@ -23,6 +23,11 @@ export class BucketlistService {
       return this._handleGetRequest(this.bucketlistAPIUrl+'?page='+ nextPage+ '&limit=5');
   }
 
+  prevPageBucketlists(prev: number): Observable<IBucketlist[]> {
+      // Load buckets of the next page
+      return this._handleGetRequest(this.bucketlistAPIUrl+'?page='+ prev+ '&limit=5');
+  }
+
   createBucketlist(data: any) {
     return this._handlePostRequest(this.bucketlistAPIUrl, data);
   }
