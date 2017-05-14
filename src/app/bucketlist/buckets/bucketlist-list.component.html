@@ -21,8 +21,8 @@
             <div  (click)="getSingleBucket(bucketlistitem.id)" class="bucketlist-name">{{ bucketlistitem.name }}</div>
             
             <div class="action-btns">
-              <i class="fa fa-trash-o" (click)="deleteBucket(bucketlistitem.id)" aria-hidden="true"></i>
               <i class="fa fa-pencil" aria-hidden="true" (click)="openUpdateDialog(bucketlistitem)"></i>
+              <i class="fa fa-trash-o" (click)="deleteBucket(bucketlistitem.id)" aria-hidden="true"></i>
             </div>
           </div>
       </div>
