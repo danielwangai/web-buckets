@@ -35,12 +35,12 @@
     <form class="ui form">
       <div class="field">
         <label>Item name</label>
-        <input id="item-name" #itemName placeholder="Add Item..." [value]="bucketItemName" placeholder="item name">
+        <input id="item-name" #newItemName placeholder="Add Item..." [value]="bucketItemName" placeholder="item name">
       </div>
     </form>  
   </div>
   <div class="actions">
-    <div class="ui positive right teal button" (click)="addItem(bucketlistId, itemName.value); itemName.value">
+    <div class="ui positive right teal button" (click)="addItem(newItemName.value); newItemName.value">
       <i class="fa fa-plus"></i> Add Item
     </div>
   </div>

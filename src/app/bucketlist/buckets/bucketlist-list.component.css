@@ -10,7 +10,9 @@
 }
  .list-items {
     flex-direction: column;
-    width: 33%;
+    background: #f7f7f7;
+    width: 45%;
+    margin-left: 1%;
 }
 .item {
     display: flex;
@@ -29,8 +31,9 @@
     color: #00b5ad;
 }
 
-.bucketlist-name:hover {
+.bucketlist-name:hover, .add-bucket:hover {
     cursor: pointer;
+    opacity: .6;
 }
 .items-list {
     list-style: none;
@@ -45,7 +48,7 @@
     color: #ff5cca;
 }
 
-.fa-pencil-o {
+.fa-pencil {
     margin-right: 1em;
     color: #00b5ad;
 }
@@ -80,4 +83,15 @@ h2 {
     text-transform: capitalize;
     font-size: 1.1em;
     margin-right: 1em;
+}
+
+.field {
+    margin-bottom: 1em;
+    width: 92%;
+    margin-left: 4%;
+}
+.search {
+    margin-bottom: 1em;
+    width: 92%;
+    margin-left: 4%;
 }

@@ -67,6 +67,8 @@ export class BucketlistListComponent implements OnInit {
     this.bucketlistService.createBucketlist(name).subscribe(
       () => this.getBucketlist()
     );
+    console.log("Bucket name");
+    console.log(name);
   }
 
   updateBucketlist(bucketName: string) {

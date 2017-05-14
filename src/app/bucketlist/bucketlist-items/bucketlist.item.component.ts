@@ -38,8 +38,8 @@ export class ItemComponent implements OnInit {
     })
   }
 
-  addItem(bucketlist_id: number, itemName: string) {
-    console.log("bucket id on click", bucketlist_id, ' plus ', itemName)
+  addItem(itemName: string) {
+    console.log("bucket id on click", this.bucketlistId, ' plus ', itemName)
     itemName = itemName.trim();
     if (!itemName) {
       console.log("Set item name!!!");
@@ -54,7 +54,8 @@ export class ItemComponent implements OnInit {
 
   getBucketlistItems() {
     this.route.params.subscribe(param => {
-      // console.log('param', param.id);
+      console.log('param');
+      console.log(param.id);
       // fetch items from bucketlist with id $id
       this.bucketlistItem.getBucketlistItems(param.id).subscribe((items: any) => {
         this.items = items
