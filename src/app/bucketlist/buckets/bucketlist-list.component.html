@@ -22,7 +22,7 @@
             
             <div class="action-btns">
               <i class="fa fa-pencil" aria-hidden="true" (click)="openUpdateDialog(bucketlistitem)"></i>
-              <i class="fa fa-trash-o" (click)="deleteBucket(bucketlistitem.id)" aria-hidden="true"></i>
+              <i class="fa fa-trash-o" (click)="deleteConfirmationDialog(bucketlistitem)" aria-hidden="true"></i>
             </div>
           </div>
       </div>
@@ -74,5 +74,18 @@
     <div class="ui positive right teal button" (click)="updateBucketlist(bucketUpdateName.value); bucketUpdateName.value">
       <i class="fa fa-plus"></i> Update
     </div>
+  </div>
+</div>
+
+<!-- delete confirmation -->
+<div class="ui small modal">
+  <i class="close icon"></i>
+  <div class="header">Header</div>
+  <div class="content">
+    <p>Are you sure you want to delete?</p>
+  </div>
+  <div class="actions">
+    <div class="ui deny button delete-bucket" (click)="deleteBucket()">Yes</div>
+    <div class="ui deny button no-delete">No</div>
   </div>
 </div>

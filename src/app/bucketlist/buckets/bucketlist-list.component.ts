@@ -49,9 +49,9 @@ export class BucketlistListComponent implements OnInit {
     this.router.navigate(['/bucketlist', id, 'items'])    
   }
 
-  deleteBucket(bucketlistId: number) {
+  deleteBucket() {
     // delete bucketlist
-    this.bucketlistService.deleteBucketlist(bucketlistId)
+    this.bucketlistService.deleteBucketlist(this.bucketlistId)
       .subscribe(res  =>{
         this.getBucketlist();
         console.log("Deleted params", res)
@@ -96,5 +96,10 @@ export class BucketlistListComponent implements OnInit {
     this.bucketlistId = bucketlist.id;
     this.bucket_name = bucketlist.name;
     $('.ui.modal.bucket-update').modal('show');
+  }
+
+  deleteConfirmationDialog(bucketlist: any) {
+    this.bucketlistId = bucketlist.id
+    $('.small.modal').modal('show');
   }
 }
