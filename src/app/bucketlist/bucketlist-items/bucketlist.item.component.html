@@ -1,0 +1,75 @@
+<div class="list-items">
+      <div class="add-item" (click)="openItemCreateDialog()">
+          <i class="fa fa-plus" aria-hidden="true"></i> Add Item
+      </div>
+    
+      <div *ngFor="let item of items">
+        <div class="item">
+          <div class="item-name">
+              {{ item.name }}
+          </div>
+          <div class="action-btns">
+            <i class="fa fa-pencil" aria-hidden="true" (click)="openUpdateDialog(item)"></i>
+            <i class="fa fa-trash-o delete" (click)="openDeleteDialog(item)" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+</div>
+<!-- Create item modal -->
+<div class="ui modal item-create">
+  <i class="close icon"></i>
+  <div class="header">
+    Add Bucketlist Item
+  </div>
+  <div class="content">
+    <form class="ui form">
+      <div class="field">
+        <label>Item name</label>
+        <input id="item-name" #newItemName placeholder="Add Item..." [value]="bucketItemName" placeholder="item name">
+      </div>
+    </form>  
+  </div>
+  <div class="actions">
+    <div class="ui positive right teal button" (click)="addItem(newItemName.value); newItemName.value">
+      <i class="fa fa-plus"></i> Add Item
+    </div>
+  </div>
+</div>
+
+<!-- Update item modal -->
+<div class="ui modal item-update">
+  <i class="close icon"></i>
+  <div class="header">
+    Update Bucketlist Item
+  </div>
+  <div class="content">
+    <form class="ui form">
+      <div class="field">
+        <label>Bucket name</label>
+        <input id="item-name" #itemName placeholder="Update Item..." [value]="bucketItemName" placeholder="item name">
+      </div>
+      <div class="ui checkbox">
+        <input type="checkbox" name="isDone" [(ngModel)]="isDone">
+        <label>Complete</label>
+    </div>
+    </form>  
+  </div>
+  <div class="actions">
+    <div class="ui positive right teal button" (click)="updateBucketlistItem(itemName.value)">
+      <i class="fa fa-plus"></i> Update Item
+    </div>
+  </div>
+</div>
+
+<!-- delete item confirmation -->
+<div class="ui small modal delete-item">
+  <i class="close icon"></i>
+  <div class="header">Delete confirmation</div>
+  <div class="content">
+    <p>Are you sure you want to delete this item?</p>
+  </div>
+  <div class="actions">
+    <div class="ui deny button delete-bucket" (click)="deleteBucketlistItem()">Yes</div>
+    <div class="ui deny button no-delete">No</div>
+  </div>
+</div>

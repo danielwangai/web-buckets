@@ -11,3 +11,4 @@ src/**/*.js
 e2e/*
 _test-output
 _temp
+**/.DS_Store

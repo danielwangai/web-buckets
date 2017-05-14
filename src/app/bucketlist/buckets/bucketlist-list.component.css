@@ -1,0 +1,97 @@
+.bucketlists-holder {
+    display: flex;
+    width: 100%;   
+}
+.bucketlists {
+    width: 30%;     
+    display: flex;
+    flex-direction: column;
+    margin-right: 1em;
+}
+ .list-items {
+    flex-direction: column;
+    background: #f7f7f7;
+    width: 45%;
+    margin-left: 1%;
+}
+.item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: .81em;
+    border: .51px solid #e8e8e8;
+    margin-bottom: 1px;
+    align-items: center;
+    background: #e8e8e8;
+}
+.bucketlist-name {
+    text-transform: capitalize;
+    font-size: 1.1em;
+    margin-right: 1em;
+    color: #00b5ad;
+}
+
+.bucketlist-name:hover, .add-bucket:hover {
+    cursor: pointer;
+    opacity: .6;
+}
+.items-list {
+    list-style: none;
+    padding: 0;
+}
+
+.action-btns {
+}
+
+.fa-trash-o {
+    margin-right: 1em;
+    color: #ff5cca;
+}
+
+.fa-pencil {
+    margin-right: 1em;
+    color: #00b5ad;
+}
+
+i:hover {
+    cursor: pointer;
+    opacity: .6;
+}
+h2 {
+    color: #00B5AD;
+    text-align: center;
+    font-size: xx-large;
+    background: #e2e2e2;
+    padding: 0.4em;
+}
+
+.add-bucket-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+    border: .51px solid #e2e2e2;
+    margin-bottom: 1px;
+    align-items: center;
+    background: #e2e2e2;
+    text-align: center;
+    color: #00b5ad;
+    font-weight: 600;
+    font-size: 1.21em;
+}
+
+.add-bucket {
+    text-transform: capitalize;
+    font-size: 1.1em;
+    margin-right: 1em;
+}
+
+.field {
+    margin-bottom: 1em;
+    width: 92%;
+    margin-left: 4%;
+}
+.search {
+    margin-bottom: 1em;
+    width: 92%;
+    margin-left: 4%;
+}
