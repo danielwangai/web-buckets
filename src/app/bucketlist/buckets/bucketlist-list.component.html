@@ -93,3 +93,15 @@
     <div class="ui deny button no-delete">No</div>
   </div>
 </div>
+
+<!-- handle extreme/invalid page numbers -->
+<div class="ui small modal no-more-buckets">
+  <i class="close icon"></i>
+  <div class="header warning-header">Alert</div>
+  <div *ngIf="!nextPage" class="content warning-content">
+    No more buckets to display
+  </div>
+  <div class="actions">
+    <div class="ui deny button modal-close">Close</div>
+  </div>
+</div>

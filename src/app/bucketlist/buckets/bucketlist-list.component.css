@@ -113,3 +113,24 @@ h2 {
 .fa-arrow-circle-o-right:hover, .fa-arrow-circle-o-left {
     cursor: pointer;
 }
+
+/* close modal button */
+.modal-close {
+    background: #00b5ad;
+    color: white;
+    /* width: 100%; */
+    margin-right: 0;
+}
+
+.warning-content {
+    color: #00b5ad;
+    font-size: larger;
+    text-align: center
+}
+
+.warning-header {
+    text-transform: uppercase;
+    text-align: center;
+    color: #ff5cca;
+    font-size: x-large;
+}

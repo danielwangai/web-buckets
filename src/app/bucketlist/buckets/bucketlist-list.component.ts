@@ -61,6 +61,12 @@ export class BucketlistListComponent implements OnInit {
 
   // next bucket page
   nextBucketPage() {
+      if (!this.nextPage) {
+          // display alert modal if next page is null
+          $('.small.modal.no-more-buckets').modal('show');
+          return
+      }
+      // move to the next page
       this.bucketlistService.nextPageBucketlists(this.nextPage)
         .subscribe((bucketlists: IBucketlist[]) => {
             this.bucketlists = bucketlists.bucketlists;
