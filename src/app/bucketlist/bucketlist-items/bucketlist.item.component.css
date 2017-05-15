@@ -47,3 +47,11 @@
     display: flex;
     flex-direction: row;
 }
+
+.completed-item {
+    color: #fc6dce;
+}
+
+.fa-check-circle-o {
+    color: #ff5cca;
+}
