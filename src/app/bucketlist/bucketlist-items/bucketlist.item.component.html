@@ -8,13 +8,9 @@
               <i *ngIf="item.status" class="fa fa-check" aria-hidden="true"></i>
               <div *ngIf="!item.status" class="ui checkbox">
                   <!-- <input type="checkbox" [checked]="saveUsername" (change)="saveUsername = !saveUsername" /> -->
-                  <input type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck (change)="markAsDone($event, item)"/>
-                  <label>complete</label>
-              </div>
-              <div *ngIf="!item.status" class="ui checkbox">
-                  <input type="checkbox" tabindex="0" class="hidden">
+                  <input type="checkbox"  data-md-icheck (change)="markAsDone($event, item)"/>
                   <label></label>
-                </div>
+              </div>
               <div class="item-name">
                   {{ item.name }}
               </div>
