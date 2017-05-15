@@ -145,6 +145,7 @@ export class BucketlistListComponent implements OnInit {
           searchTerm = searchTerm.trim()
           if (!searchTerm) {
               console.log("Provide search term.")
+              return;
           }
           this.bucketlistService.searchBucketlist(searchTerm)
             .subscribe((bucketlists: IBucketlist[]) => {

@@ -134,3 +134,13 @@ h2 {
     color: #ff5cca;
     font-size: x-large;
 }
+
+/* Home */
+.fa-home {
+    float: left;
+    color: #00B5AD;
+    text-align: center;
+    font-size: xx-large;
+    background: #e2e2e2;
+    padding: 0.2em;
+}
