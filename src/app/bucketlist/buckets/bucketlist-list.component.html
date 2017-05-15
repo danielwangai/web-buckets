@@ -7,7 +7,7 @@
     <!-- Search here -->
     <div class="ui form">
       <div class="field">
-        <input class="search" #searchData [(ngModel)]="searchTerm" placeholder="Search bucketlist ..." required>
+        <input class="search" #searchData [(ngModel)]="searchTerm" placeholder="Search bucketlist ..." required (keydown)="searchBucket($event, searchData.value)">
       </div>
     </div>
     <div>
@@ -16,7 +16,7 @@
           <i class="fa fa-plus"></i> Add Bucketlist
         </div>
       </div>
-      <div *ngFor="let bucketlistitem of bucketlists | search : searchTerm">
+      <div *ngFor="let bucketlistitem of bucketlists">
           <div class="item">
             <div  (click)="getSingleBucket(bucketlistitem.id)" class="bucketlist-name">{{ bucketlistitem.name }}</div>
 

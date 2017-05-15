@@ -138,6 +138,28 @@ export class BucketlistListComponent implements OnInit {
       )
   }
 
+  // search bucketlist
+  searchBucket(event, searchTerm: string) {
+      if(event.keyCode == 13) {
+          console.log("Search term - "+ searchTerm)
+          searchTerm = searchTerm.trim()
+          if (!searchTerm) {
+              console.log("Provide search term.")
+          }
+          this.bucketlistService.searchBucketlist(searchTerm)
+            .subscribe((bucketlists: IBucketlist[]) => {
+                this.bucketlists = bucketlists;
+                // update pagination pages
+                this.nextPage = bucketlists.next_page_number
+                this.prevPage = bucketlists.prev_page_number
+                console.log("search params")
+                console.log(bucketlists)
+            },
+            (error: any) => this.errorMessage = <any>error
+            )
+      }
+  }
+
   openCreateDialog() {
     $('.ui.modal.bucket-create').modal('show');
   }
