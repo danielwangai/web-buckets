@@ -144,3 +144,18 @@ h2 {
     background: #e2e2e2;
     padding: 0.2em;
 }
+
+/* Logout */
+.logout-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+    border: .51px solid #e2e2e2;
+    margin-bottom: 1px;
+    align-items: center;
+    background: #e2e2e2;
+    text-align: center;
+    color: #00b5ad;
+    font-weight: 600;
+    font-size: 1.21em;
+}

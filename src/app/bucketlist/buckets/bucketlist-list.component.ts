@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import {IBucketlist} from '../../models/bucketlist';
 import { BucketlistService } from '../all-bucketlists.service';
+// import { AuthenticationService } from './user/authentication.service';
+import { AuthenticationService } from '../../user/authentication.service';
 
 declare var $: any;
 
@@ -30,7 +32,8 @@ export class BucketlistListComponent implements OnInit {
 
   constructor (
     private bucketlistService: BucketlistService,
-    private router: Router
+    private router: Router,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -159,6 +162,11 @@ export class BucketlistListComponent implements OnInit {
             (error: any) => this.errorMessage = <any>error
             )
       }
+  }
+
+  // logout
+  logout() {
+    this.authService.logout();
   }
 
   openCreateDialog() {
