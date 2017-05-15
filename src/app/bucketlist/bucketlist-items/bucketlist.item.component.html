@@ -2,11 +2,22 @@
       <div class="add-item" (click)="openItemCreateDialog()">
           <i class="fa fa-plus" aria-hidden="true"></i> Add Item
       </div>
-    
       <div *ngFor="let item of items">
         <div class="item">
-          <div class="item-name">
-              {{ item.name }}
+          <div class="item-details">
+              <i *ngIf="item.status" class="fa fa-check" aria-hidden="true"></i>
+              <div *ngIf="!item.status" class="ui checkbox">
+                  <!-- <input type="checkbox" [checked]="saveUsername" (change)="saveUsername = !saveUsername" /> -->
+                  <input type="checkbox" [(ngModel)]="theCheckbox"  data-md-icheck (change)="markAsDone($event, item)"/>
+                  <label>complete</label>
+              </div>
+              <div *ngIf="!item.status" class="ui checkbox">
+                  <input type="checkbox" tabindex="0" class="hidden">
+                  <label></label>
+                </div>
+              <div class="item-name">
+                  {{ item.name }}
+              </div>
           </div>
           <div class="action-btns">
             <i class="fa fa-pencil" aria-hidden="true" (click)="openUpdateDialog(item)"></i>
@@ -27,7 +38,7 @@
         <label>Item name</label>
         <input id="item-name" #newItemName placeholder="Add Item..." [value]="bucketItemName" placeholder="item name">
       </div>
-    </form>  
+    </form>
   </div>
   <div class="actions">
     <div class="ui positive right teal button" (click)="addItem(newItemName.value); newItemName.value">
@@ -48,11 +59,11 @@
         <label>Bucket name</label>
         <input id="item-name" #itemName placeholder="Update Item..." [value]="bucketItemName" placeholder="item name">
       </div>
-      <div class="ui checkbox">
+      <!-- <div class="ui checkbox">
         <input type="checkbox" name="isDone" [(ngModel)]="isDone">
         <label>Complete</label>
-    </div>
-    </form>  
+    </div> -->
+    </form>
   </div>
   <div class="actions">
     <div class="ui positive right teal button" (click)="updateBucketlistItem(itemName.value)">
