@@ -26,7 +26,7 @@ export class BucketlistItemService {
     }
 
     deleteBucketlistItem(bucketlist_id: number, item_id: number): Observable<IItem> {
-      return this._handleDeleteRequest(this.bucketlistAPIUrl + 
+      return this._handleDeleteRequest(this.bucketlistAPIUrl +
         '/api/v1/bucketlists/'+bucketlist_id+'/items/'+ item_id);
     }
 
@@ -36,6 +36,10 @@ export class BucketlistItemService {
 
     updateBucketlistItem(bucketlistId: number, itemId: number, itemName: string, isDone: boolean) {
       return this._handlePutRequest(this.bucketlistAPIUrl + '/api/v1/bucketlists/'+bucketlistId + '/items/'+ itemId, itemName, isDone)
+    }
+
+    markAsDone(bucketlistId: number, itemId: number, isDone: boolean) {
+        return this._markAsDone(this.bucketlistAPIUrl + '/api/v1/bucketlists/'+bucketlistId + '/items/'+ itemId, isDone)
     }
 
     private _handlePostRequest(url: string, itemName: string) {
@@ -101,6 +105,22 @@ export class BucketlistItemService {
         return this.http.put(url, JSON.stringify({"name": name, "status": isDone}), options)
           .map(this.extractData)
           .catch(this.handleError)
+    }
+
+    private _markAsDone(url: string, isDone: boolean) {
+        // update bucketlist item
+        let { token } = JSON.parse(localStorage.getItem('currentUser'));
+          const headers = new Headers({
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Authorization': token
+          });
+
+          const options = new RequestOptions({ headers });
+
+          return this.http.put(url, JSON.stringify({"status": isDone}), options)
+            .map(this.extractData)
+            .catch(this.handleError)
     }
 
     private extractData(res: Response) {

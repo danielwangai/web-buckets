@@ -24,6 +24,9 @@ export class ItemComponent implements OnInit {
   bucketItemName: string = '';
   isDone: boolean;
   items: any[] = [];
+  // checkbox values
+  marked = false;
+  theCheckbox = false;
   constructor (
     private route: ActivatedRoute,
     private bucketlistItem: BucketlistItemService,
@@ -54,8 +57,6 @@ export class ItemComponent implements OnInit {
 
   getBucketlistItems() {
     this.route.params.subscribe(param => {
-      console.log('param');
-      console.log(param.id);
       // fetch items from bucketlist with id $id
       this.bucketlistItem.getBucketlistItems(param.id).subscribe((items: any) => {
         this.items = items
@@ -77,7 +78,7 @@ export class ItemComponent implements OnInit {
       .subscribe(response => {
         console.log(response);
       })
-    this.router.navigate(['/bucketlist'])
+    this.router.navigate(['/bucketlists'])
   }
 
   updateBucketlistItem(itemName: string) {
@@ -86,12 +87,27 @@ export class ItemComponent implements OnInit {
       console.log("Name required.")
       return
     }
+    console.log("Is done")
+    console.log(this.isDone)
     this.bucketlistItem.updateBucketlistItem(this.bucketlistId, this.bucketItemId, itemName, this.isDone)
       .subscribe(response => {
         console.log("update response")
         console.log(response)
         this.getBucketlistItems()
       })
+  }
+
+  markAsDone(event, item: any){
+    this.isDone = event.target.checked;
+    this.bucketlistItem.markAsDone(item.bucketlist_id, item.id, this.isDone)
+        .subscribe(response => {
+            console.log("mark as done")
+            console.log(response)
+            this.getBucketlistItems()
+        })
+
+      console.log("checked")
+      console.log(this.isDone)
   }
 
   openItemCreateDialog() {

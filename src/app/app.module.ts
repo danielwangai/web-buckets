@@ -24,7 +24,7 @@ import { SearchPipe } from './app.pipes';
 const appRoutes: Routes = [
   {
     path: '',
-    redirectTo: 'bucketlist',
+    redirectTo: 'bucketlists',
     pathMatch: 'full'
   },
   {
@@ -36,7 +36,7 @@ const appRoutes: Routes = [
     component: RegisterComponent
   },
   {
-    path: 'bucketlist',
+    path: 'bucketlists',
     canActivate: [ AuthGuard ],
     component: BucketlistListComponent,
     children: [

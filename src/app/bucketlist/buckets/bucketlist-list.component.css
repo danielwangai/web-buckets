@@ -1,9 +1,9 @@
 .bucketlists-holder {
     display: flex;
-    width: 100%;   
+    width: 100%;
 }
 .bucketlists {
-    width: 30%;     
+    width: 30%;
     display: flex;
     flex-direction: column;
     margin-right: 1em;
@@ -94,4 +94,68 @@ h2 {
     margin-bottom: 1em;
     width: 92%;
     margin-left: 4%;
+}
+
+/*pagination navigation buttons*/
+.fa-arrow-circle-o-right {
+    float: right;
+    margin-right: 1.2em;
+    margin-top: .7em;
+    color: #00b5ad;
+}
+
+.fa-arrow-circle-o-left {
+    margin-left: 1.2em;
+    margin-top: .7em;
+    color: #00b5ad;
+}
+
+.fa-arrow-circle-o-right:hover, .fa-arrow-circle-o-left {
+    cursor: pointer;
+}
+
+/* close modal button */
+.modal-close {
+    background: #00b5ad;
+    color: white;
+    /* width: 100%; */
+    margin-right: 0;
+}
+
+.warning-content {
+    color: #00b5ad;
+    font-size: larger;
+    text-align: center
+}
+
+.warning-header {
+    text-transform: uppercase;
+    text-align: center;
+    color: #ff5cca;
+    font-size: x-large;
+}
+
+/* Home */
+.fa-home {
+    float: left;
+    color: #00B5AD;
+    text-align: center;
+    font-size: xx-large;
+    background: #e2e2e2;
+    padding: 0.2em;
+}
+
+/* Logout */
+.logout-container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+    border: .51px solid #e2e2e2;
+    margin-bottom: 1px;
+    align-items: center;
+    background: #e2e2e2;
+    text-align: center;
+    color: #00b5ad;
+    font-weight: 600;
+    font-size: 1.21em;
 }
